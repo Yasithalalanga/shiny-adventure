@@ -1,0 +1,46 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="ConfigRetrievalAPI" context="/configs">
+    <resource methods="GET" uri-template="/">
+        <inSequence>
+            <!-- Read sensitive information from secure vault -->
+            <variable name="dbPassword" expression="${wso2-vault('DB_PASSWORD')}" type="STRING"/>
+            
+            <!-- Read configuration from environment variable -->
+            <variable name="dbUsername" expression="${configs.DB_USERNAME}" type="STRING"/>
+            
+            <!-- Create the response payload -->
+            <payloadFactory media-type="json">
+                <format>
+                    {
+                        "message": "Hello World",
+                        "configurations": {
+                            "username": "${vars.dbUsername}",
+                            "password": "${vars.dbPassword}"
+                        }
+                    }
+                </format>
+            </payloadFactory>
+            
+            <!-- Log the retrieval operation -->
+            <log category="INFO">
+                <message>Configuration values retrieved successfully</message>
+            </log>
+            
+            <!-- Send the response back to the client -->
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log category="ERROR">
+                <message>Error occurred: ${error.message}</message>
+            </log>
+            <payloadFactory media-type="json">
+                <format>
+                    {
+                        "error": true,
+                        "message": "Failed to retrieve configurations: ${error.message}"
+                    }
+                </format>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>
