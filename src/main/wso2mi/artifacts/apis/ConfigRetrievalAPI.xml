@@ -28,19 +28,5 @@
             <!-- Send the response back to the client -->
             <respond/>
         </inSequence>
-        <faultSequence>
-            <log category="ERROR">
-                <message>Error occurred: ${error.message}</message>
-            </log>
-            <payloadFactory media-type="json">
-                <format>
-                    {
-                        "error": true,
-                        "message": "Failed to retrieve configurations: ${error.message}"
-                    }
-                </format>
-            </payloadFactory>
-            <respond/>
-        </faultSequence>
     </resource>
 </api>
