@@ -9,7 +9,7 @@
             <!-- Read from Redis Configuration Group -->
             <variable name="redisConfig" expression="${configs.REDIS_SERVER_URL}" type="STRING"/>
             <variable name="redisPort" expression="${configs.REDIS_SERVER_PORT}" type="STRING"/>
-            <variable name="redisPassword" expression="${configs.REDIS_SERVER_PASSWORD}" type="STRING"/>
+            <variable name="redisPassword" expression="${wso2-vault('REDIS_SERVER_PASSWORD')}" type="STRING"/>
             
             <!-- Create the response payload -->
             <payloadFactory media-type="json">
