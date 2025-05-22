@@ -2,10 +2,14 @@
     <resource methods="GET" uri-template="/">
         <inSequence>
             <!-- Read sensitive information from secure vault -->
-            <variable name="dbPassword" expression="${wso2-vault('DB_PASSWORD')}" type="STRING"/>
-            
+            <variable name="dbPassword" expression="${wso2-vault('ADHOC_DB_PASSWORD')}" type="STRING"/>
             <!-- Read configuration from environment variable -->
-            <variable name="dbUsername" expression="${configs.DB_USERNAME}" type="STRING"/>
+            <variable name="dbUsername" expression="${configs.ADHOC_DB_USERNAME}" type="STRING"/>
+
+            <!-- Read from Redis Configuration Group -->
+            <variable name="redisConfig" expression="${configs.REDIS_SERVER_URL}" type="STRING"/>
+            <variable name="redisPort" expression="${configs.REDIS_SERVER_PORT}" type="STRING"/>
+            <variable name="redisPassword" expression="${configs.REDIS_SERVER_PASSWORD}" type="STRING"/>
             
             <!-- Create the response payload -->
             <payloadFactory media-type="json">
@@ -14,7 +18,12 @@
                         "message": "Hello World",
                         "configurations": {
                             "username": "${vars.dbUsername}",
-                            "password": "${vars.dbPassword}"
+                            "password": "${vars.dbPassword}",
+                            "redis": {
+                                "url": "${vars.redisConfig}",
+                                "port": "${vars.redisPort}",
+                                "password": "${vars.redisPassword}"
+                            }
                         }
                     }
                 </format>
