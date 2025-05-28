@@ -1,8 +1,19 @@
 # +required The configuration file schema version
-schemaVersion: 1.2
+schemaVersion: 1.0
 
-# +optional Outgoing connection details for the component.
 dependencies:
-    connectionReferences:
-    - name: test-injected-values
-      resourceRef: service:/yasitha/mi-flag-enabled-check/v1/60717/PUBLIC
+    serviceReferences:
+    - name: choreo:///yasithaorg/kwav/greeting-service-go/803f0/v1/PUBLIC
+      connectionConfig: 01f03bcc-c8fe-1e30-8216-11645361e2d1
+      env:
+      - from: ServiceURL
+        to: REDIS_SERVER_URL
+      - from: ConsumerKey
+        to: REDIS_SERVER_PORT
+      - from: ConsumerSecret
+        to: ADHOC_DB_USERNAME
+      - from: TokenURL
+        to: TOKEN_URL
+      - from: ChoreoAPIKey
+        to: API_KEY
+
