@@ -29,8 +29,8 @@ endpoints:
 
 dependencies:
     serviceReferences:
-    - name: choreo:///yasithaorg/wtlh/greeting-service/8b1c3/v1/PUBLIC
-      connectionConfig: 01f03be2-703a-1450-97c9-748af1d71265
+    - name: choreo:///yasithaorg/kwav/greeting-service-go/803f0/v1/PUBLIC
+      connectionConfig: 01f03bcc-c8fe-1e30-8216-11645361e2d1
       env:
       - from: ServiceURL
         to: REDIS_SERVER_URL
