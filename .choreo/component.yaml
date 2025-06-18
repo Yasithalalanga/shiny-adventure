@@ -29,8 +29,8 @@ endpoints:
 
 dependencies:
     serviceReferences:
-    - name: choreo:///yasithaorg/ballerina-component-test/greeting-service/8b1c3/v2/PUBLIC
-      connectionConfig: 01f04bf9-4bd9-1f30-8342-2803a33ecfdd
+    - name: choreo:///yasithaorg/kwav/greeting-service-go/803f0/v1/PUBLIC
+      connectionConfig: 01f04c03-54cf-1c26-98b2-2f23443605e2
       env:
       - from: ServiceURL
         to: CONN_SVC_URL
