@@ -29,8 +29,8 @@ endpoints:
 
 dependencies:
     serviceReferences:
-    - name: choreo:///yasithaorg/kwav/greeting-service-go/803f0/v1/PUBLIC
-      connectionConfig: 01f04c03-54cf-1c26-98b2-2f23443605e2
+    - name: choreo:///yasithaorg/wtlh/greeting-service/8b1c3/v1/PUBLIC
+      connectionConfig: 01f04c03-9a8c-18ae-95c2-131477d1a3c1
       env:
       - from: ServiceURL
         to: CONN_SVC_URL
