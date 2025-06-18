@@ -30,16 +30,16 @@ endpoints:
 dependencies:
     serviceReferences:
     - name: choreo:///yasithaorg/ballerina-component-test/greeting-service/8b1c3/v2/PUBLIC
-      connectionConfig: 01f04296-860c-1d1e-be23-8e5dcf0c8e17
+      connectionConfig: 01f04bf9-4bd9-1f30-8342-2803a33ecfdd
       env:
       - from: ServiceURL
-        to: REDIS_SERVER_URL
+        to: CONN_SVC_URL
       - from: ConsumerKey
-        to: REDIS_SERVER_PORT
+        to: CONN_CON_KEY
       - from: ConsumerSecret
-        to: ADHOC_DB_USERNAME
+        to: CONN_CON_SECRET
       - from: TokenURL
-        to: TOKEN_URL
+        to: CONN_TKN_URL
       - from: ChoreoAPIKey
-        to: API_KEY
+        to: CONN_API_KEY
 
