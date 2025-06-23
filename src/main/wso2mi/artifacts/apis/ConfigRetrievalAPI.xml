@@ -18,6 +18,11 @@
             <variable name="dbUsername" expression="${configs.ADHOC_DB_USERNAME}" type="STRING"/>
             <variable name="dbPassword" expression="${wso2-vault('ADHOC_DB_PASSWORD')}" type="STRING"/>
 
+            <!-- Redis Config Group Read -->
+            <variable name="redisPort" expression="${configs.REDIS_URL}" type="STRING"/>
+            <variable name="redisHost" expression="${configs.REDIS_HOSTNAME}" type="STRING"/>
+            <variable name="redisPassword" expression="${wso2-vault('REDIS_PASSWORD')}" type="STRING"/>
+
             <!-- Create the response payload -->
             <payloadFactory media-type="json">
                 <format>
@@ -25,12 +30,12 @@
                         "message": "Connection configurations",
                         "adhocConfigurations": {
                             "username": "${vars.dbUsername}",
-                            "password": "${vars.dbPassword}",
+                            "password": "${vars.dbPassword}"
                         },
                         "connectionGeneral": {
                             "tokenURL": "${vars.connTokenURL}",
                             "serviceURL": "${vars.connServiceURL}",
-                            "consumerKey": "${vars.connConsumerKey}",
+                            "consumerKey": "${vars.connConsumerKey}"
                         },
                         "connectionSecretsAsVault": {
                             "consumerSecret": "${vars.connConsumerSecret}",
@@ -39,6 +44,11 @@
                         "connectionSecretsAsEnvVars": {
                             "consumerSecretEnv": "${vars.connConsumerSecretEnv}",
                             "choreoAPIKeyEnv": "${vars.connChoreoAPIKeyEnv}"
+                        },
+                        "redisConfig": {
+                            "port": "${vars.redisPort}",
+                            "host": "${vars.redisHost}",
+                            "password": "${vars.redisPassword}"
                         }
                     }
                 </format>
