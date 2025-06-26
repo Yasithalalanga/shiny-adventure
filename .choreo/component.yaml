@@ -27,19 +27,3 @@ endpoints:
     # The path should be relative to the docker context.
     schemaFilePath: ConfigRetrievalAPI.yaml
 
-dependencies:
-    serviceReferences:
-    - name: choreo:///yasithaorg/wtlh/greeting-service/8b1c3/v1/PUBLIC
-      connectionConfig: 01f04ff6-c1c5-1cc0-9655-6b16e71aae92
-      env:
-      - from: ServiceURL
-        to: CONN_SVC_URL
-      - from: ConsumerKey
-        to: CONN_CON_KEY
-      - from: ConsumerSecret
-        to: CONN_CON_SECRET
-      - from: TokenURL
-        to: CONN_TKN_URL
-      - from: ChoreoAPIKey
-        to: CONN_API_KEY
-
